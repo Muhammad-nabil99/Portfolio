@@ -39,7 +39,7 @@ function Navbar() {
         </div>
 
         <button
-          className="mx-5 sm:absolute md:top-9    lg:mr-20 sm:z-40 sm:right-0 w-fit sm:dark:bg-white sm:bg-slate-800  sm:rounded-full"
+          className="mx-5 sm:absolute md:top-9   sm:p-2 lg:mr-20 sm:z-40 sm:right-0 w-fit sm:dark:bg-white sm:bg-slate-800  sm:rounded-full"
           onClick={toggleDarkMode}
         >
           {isDarkMode ? (
@@ -55,7 +55,7 @@ function Navbar() {
         <ul
           className={`backdrop-blur-sm h-screen md:h-fit md:justify-center bg-white/30 items-center text-black w-full md:w-fit md:rounded-full ${
             isOpen ? "flex" : "hidden"
-          } absolute md:static flex-col justify-start   md:flex-row md:flex gap-16 md:gap-16 font-bold px-6 py-16 dark:text-white text-black text-xl sm:text-sm md:py-4  md:mx-auto md:my-4`}
+          } absolute md:static flex-col justify-start   md:flex-row md:flex gap-16 md:gap-16 font-bold px-6 py-16 dark:text-white text-black text-xl sm:text-lg md:py-4  md:mx-auto md:my-4`}
         >
           <li className="w-full text-center">
             <Link
