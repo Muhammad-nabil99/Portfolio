@@ -1,0 +1,123 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+:root {
+  --background: #f7f7f2;
+  --surface: #ffffff;
+  --foreground: #171717;
+  --muted: #6b6b65;
+  --border: #e2e2da;
+  --accent: #c7f36b;
+  --accent-foreground: #171717;
+  /* Lime fails contrast as text/focus on light backgrounds (~1.2:1), so
+     text, links and focus rings use this darker companion token instead. */
+  --accent-text: #4a6b00;
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --background: #141414;
+  --surface: #1d1d1b;
+  --foreground: #f4f4ec;
+  --muted: #a4a49b;
+  --border: #343430;
+  --accent: #c7f36b;
+  --accent-foreground: #171717;
+  --accent-text: #c7f36b;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent-text: var(--accent-text);
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Smooth theme transition, applied briefly while toggling */
+html.theme-transition,
+html.theme-transition *,
+html.theme-transition *::before,
+html.theme-transition *::after {
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease !important;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent-text);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-foreground);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+@layer components {
+  .container-grid {
+    width: 100%;
+    max-width: 80rem;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+  @media (min-width: 768px) {
+    .container-grid {
+      padding-inline: 2.5rem;
+    }
+  }
+  .display-xl {
+    font-size: clamp(3.25rem, 11.5vw, 10.5rem);
+    line-height: 0.88;
+    letter-spacing: -0.05em;
+    font-weight: 600;
+  }
+  .display-lg {
+    font-size: clamp(2.25rem, 5.5vw, 4.5rem);
+    line-height: 0.98;
+    letter-spacing: -0.04em;
+    font-weight: 600;
+  }
+  .meta {
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+}
