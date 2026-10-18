@@ -16,11 +16,11 @@ export const siteConfig = {
 } as const;
 
 export const navLinks = [
-  { label: "About", href: "#about" },
-  { label: "Experience", href: "#experience" },
-  { label: "Skills", href: "#skills" },
-  { label: "Contact", href: "#contact" },
-  { label: "More", href: "#more" },
+  { label: "About", href: "/#about" },
+  { label: "Experience", href: "/#experience" },
+  { label: "Skills", href: "/#skills" },
+  { label: "Contact", href: "/#contact" },
+  { label: "More", href: "/more" },
 ] as const;
 
 export const principles = [

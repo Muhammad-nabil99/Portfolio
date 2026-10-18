@@ -4,7 +4,6 @@ import About from "@/components/sections/About";
 import CallToAction from "@/components/sections/CallToAction";
 import Experience from "@/components/sections/Experience";
 import Hero from "@/components/sections/Hero";
-import More from "@/components/sections/More";
 import Skills from "@/components/sections/Skills";
 
 export default function Home() {
@@ -23,7 +22,6 @@ export default function Home() {
         <Experience />
         <Skills />
         <CallToAction />
-        <More />
       </main>
       <Footer />
     </>

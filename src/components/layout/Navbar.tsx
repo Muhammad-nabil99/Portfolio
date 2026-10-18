@@ -11,7 +11,7 @@ export default function Navbar() {
   const [active, setActive] = useState<string>("");
 
   useEffect(() => {
-    const ids = navLinks.map((l) => l.href.slice(1));
+    const ids = navLinks.filter((l) => l.href.startsWith("/#")).map((l) => l.href.slice(2));
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
@@ -44,7 +44,10 @@ export default function Navbar() {
         <div className="flex items-center gap-2">
           <ul className="hidden items-center gap-1 md:flex">
             {navLinks.map((link) => {
-              const isActive = active === link.href.slice(1);
+              const hashIndex = link.href.indexOf("#");
+              const isActive = hashIndex !== -1
+                ? active === link.href.slice(hashIndex + 1)
+                : false;
               return (
                 <li key={link.href}>
                   <a
