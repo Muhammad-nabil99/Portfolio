@@ -22,7 +22,7 @@ function Skills({ size, teckStacks = [], type = "md" }) {
   }
 
   return (
-    <div className={`flex gap-${space} my-5 flex-wrap justify-center`}>
+    <div className={`flex ${type === "sm" ? "gap-3" : "gap-5"} my-5 flex-wrap justify-center`}>
       {teckStacks.map((tech) => {
         {
           if (tech === "react")
