@@ -1,45 +1,51 @@
+const experiences = [
+  {
+    number: "01",
+    title: "Independent Study",
+    organization: "Studi Independen Bersertifikat × Dicoding",
+    image: "./image/studi-independen-img.png",
+    alt: "Independent study program",
+    description: "Joined a structured learning program with a focus on frontend and backend development.",
+    focus: "Frontend & backend development",
+  },
+  {
+    number: "02",
+    title: "Frontend Bootcamp",
+    organization: "Udemy",
+    image: "./image/udemy.png",
+    alt: "Frontend bootcamp learning",
+    description: "Developed frontend knowledge through guided, project-oriented online learning.",
+    focus: "Frontend development",
+  },
+  {
+    number: "03",
+    title: "Freelance Development",
+    organization: "Project-based work",
+    image: "./image/freelance-v2.jpeg",
+    alt: "Freelance web development work",
+    description: "Worked on web development projects across frontend interfaces and backend application systems, with attention to usability and performance.",
+    focus: "Web applications",
+  },
+];
+
 function Experience() {
   return (
-    <div className=" flex flex-wrap flex-col sm:flex-row  justify-center items-center sm:items-stretch gap-3 ">
-      <div className=" max-w-80 border-2 p-2 rounded-md hover:border-2 hover:border-[#faad1b]">
-        <img
-          src="./image/studi-independen-img.png"
-          className="h-52 w-full object-cover  rounded-md"
-          alt="studi_independen"
-        />
-        <h2 className="font-bold my-2 text-center">Studi Independen</h2>
-        <p className="text-sm p-1">
-          Joined <span className="font-bold"><span className="text-yellow-400"> SIB Studi Independen x Dicoding </span></span> by taking concentration on
-          Front-End & Back-End Developer
-        </p>
-      </div>
-      <div className=" max-w-80 border-2 p-2 rounded-md hover:border-2 hover:border-[#faad1b]">
-        <img
-          src="./image/udemy.png"
-          className="h-52 w-full object-cover rounded-md"
-          alt="udemy-bootcamp"
-        />
-        <h2 className="font-bold my-2 text-center">Bootcamp</h2>
-        <p className="text-sm p-1">
-          Joined <span className="font-bold text-violet-700">Udemy</span> by taking concentration on
-          Front-End 
-        </p>
-      </div>
-      <div className="max-w-80 hover:border-2 hover:border-[#faad1b] snap-center border-2 p-2 rounded-md">
-        <img
-          src="./image/freelance-v2.jpeg"
-          className="h-52 w-full object-cover rounded-md"
-          alt="freelance"
-        />
-        <h2 className="font-bold my-2 text-center">Freelance</h2>
-        <p className="text-sm p-1">
-          Working on various web development projects as Front-End & Back-End
-          Developer, including the creation of websites and application systems.
-          Focused on efficiency, performance, and optimal user experience.
-          
-        </p>
-      </div>
+    <div className="relative grid gap-5 lg:grid-cols-3">
+      {experiences.map((item) => (
+        <article key={item.number} className="experience-card">
+          <div className="flex items-center justify-between">
+            <span className="text-xs tracking-[0.2em] text-[#d9a441]">{item.number}</span>
+            <span className="h-px flex-1 bg-white/10 ml-4" />
+          </div>
+          <img src={item.image} alt={item.alt} loading="lazy" className="mt-6 h-40 w-full rounded-lg object-cover" />
+          <p className="mt-6 text-xs font-semibold tracking-[0.14em] text-[#d9a441] uppercase">{item.organization}</p>
+          <h3 className="mt-2 text-xl font-semibold text-[#f1eee6]">{item.title}</h3>
+          <p className="mt-3 text-sm leading-7 text-[#969b9d]">{item.description}</p>
+          <p className="mt-5 border-t border-white/10 pt-4 text-xs text-[#c3c2bb]">Focus: {item.focus}</p>
+        </article>
+      ))}
     </div>
   );
 }
+
 export default Experience;
