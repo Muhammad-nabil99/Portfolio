@@ -1,28 +1,13 @@
-import { FaGithub } from "react-icons/fa";
-import { FaLinkedin } from "react-icons/fa6";
-import { FaInstagram } from "react-icons/fa";
-
 function Footer() {
   return (
-    <div className="flex items-center flex-col bg-black text-white">
-      <div className="my-2">
-        <h2 className="font-bold my-2 capitalize text-center">Get in touch</h2>
-        <div className="flex gap-4 justify-center">
-          <a target="_blank" href="https://github.com/Muhammad-nabil99">
-            <FaGithub className="w-6 h-6" />
-          </a>
-          <a target="_blank" href="https://www.linkedin.com/in/muhammad-nabil-3960382b2/">
-            <FaLinkedin className="w-6 h-6" />
-          </a>
-          <a target="_blank" href="https://www.instagram.com/muhammadnabil991025/">
-            <FaInstagram className="w-6 h-6" />
-          </a>
-        </div>
+    <footer className="border-t border-white/[0.07] bg-[#07090b]">
+      <div className="mx-auto flex max-w-7xl flex-col gap-3 px-6 py-8 text-xs text-[#777e80] sm:flex-row sm:items-center sm:justify-between sm:px-10 lg:px-16">
+        <a href="#home" className="text-sm font-bold tracking-[-0.04em] text-white">nabil<span className="text-[#d9a441]">.</span></a>
+        <p>Designed and built with care.</p>
+        <p>© {new Date().getFullYear()} Nabil. All rights reserved.</p>
       </div>
-      <p className="font-bold my-5 text-center">
-        Powered by <span className="text-[#faad1b]">Nabil</span> 2023
-      </p>
-    </div>
+    </footer>
   );
 }
+
 export default Footer;
