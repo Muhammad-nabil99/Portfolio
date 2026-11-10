@@ -4,22 +4,29 @@ import Experience from "./components/Experience";
 import Skills from "./components/Skills";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
-import { ArrowDown, ArrowUpRight, Code2, Layers3, Terminal } from "lucide-react";
+import {
+  ArrowDown,
+  ArrowUpRight,
+  Code2,
+  Layers3,
+  Terminal,
+  Sparkles,
+} from "lucide-react";
 
 const skillGroups = [
   {
     title: "Frontend",
-    description: "Building responsive, accessible interfaces.",
-    items: ["react", "javascript", "tailwind", "bootstrap", "reactRouter", "reactQuery"],
+    description: "Building responsive interfaces and smooth user experiences.",
+    items: ["react", "javascript", "tailwind", "bootstrap", "reactRouter", "reactQuery", "redux"],
   },
   {
     title: "Backend & data",
-    description: "Connecting interfaces to reliable application logic.",
-    items: ["nodeJs", "supabase", "firebase", "redux"],
+    description: "Connecting products to application logic and data services.",
+    items: ["nodeJs", "supabase", "firebase"],
   },
   {
     title: "Tools & collaboration",
-    description: "Working with design and development workflows.",
+    description: "The tools I use to design, build, and maintain projects.",
     items: ["git", "figma"],
   },
 ];
@@ -30,45 +37,66 @@ function App() {
       <Navbar />
 
       <main>
-        <section id="home" className="hero-section relative mx-auto flex min-h-[92vh] max-w-7xl items-center px-6 pb-20 pt-32 sm:px-10 lg:px-16">
+        <section id="home" className="hero-section relative mx-auto flex min-h-[92vh] max-w-7xl items-center px-6 pb-16 pt-32 sm:px-10 lg:px-16">
           <div className="hero-grid pointer-events-none absolute inset-0" aria-hidden="true" />
-          <div className="relative z-10 max-w-4xl">
-            <div className="mb-8 inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/[0.035] px-4 py-2 text-xs font-medium tracking-[0.18em] text-[#b7b5ae] uppercase">
-              <span className="h-2 w-2 rounded-full bg-[#d9a441] shadow-[0_0_14px_#d9a441]" />
-              Software engineer · Portfolio
+          <div className="hero-layout relative z-10 grid w-full items-center gap-14 lg:grid-cols-[1.2fr_0.8fr] lg:gap-12">
+            <div className="max-w-4xl">
+              <div className="mb-8 inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/[0.035] px-4 py-2 text-xs font-medium tracking-[0.16em] text-[#b7b5ae] uppercase">
+                <span className="h-2 w-2 rounded-full bg-[#d9a441] shadow-[0_0_14px_#d9a441]" />
+                Software engineer · Portfolio
+              </div>
+              <p className="mb-5 text-sm font-semibold tracking-[0.28em] text-[#d9a441] uppercase">Hello, I'm Nabil</p>
+              <h1 className="max-w-4xl text-5xl font-semibold leading-[1.08] tracking-[-0.055em] sm:text-6xl lg:text-[4.65rem]">
+                I build digital products that <span className="font-serif font-normal italic text-[#d9a441]">solve real problems.</span>
+              </h1>
+              <p className="mt-8 max-w-2xl text-base leading-8 text-[#a7a8a7] sm:text-lg">
+                I enjoy turning ideas into useful web experiences, exploring how systems work behind the interface, and building software with people and real-world needs in mind.
+              </p>
+              <div className="mt-10 flex flex-wrap items-center gap-4">
+                <a href="#projects" className="inline-flex items-center gap-3 rounded-full bg-[#d9a441] px-6 py-3.5 text-sm font-bold text-[#17140e] transition hover:-translate-y-1 hover:bg-[#edbd61]">
+                  Explore my work <ArrowUpRight size={17} />
+                </a>
+                <a href="#contact" className="inline-flex items-center gap-2 rounded-full border border-white/15 px-6 py-3.5 text-sm font-semibold text-[#e8e5dc] transition hover:border-[#d9a441]/70 hover:text-[#edbd61]">
+                  Get in touch <ArrowDown size={16} />
+                </a>
+              </div>
+              <div className="mt-14 flex flex-wrap gap-x-8 gap-y-3 border-t border-white/10 pt-6 text-[11px] tracking-[0.15em] text-[#85898a] uppercase sm:text-xs">
+                <span>Frontend development</span>
+                <span>Full-stack learning</span>
+                <span>Product-minded engineering</span>
+              </div>
             </div>
-            <p className="mb-5 text-sm font-semibold tracking-[0.28em] text-[#d9a441] uppercase">Hello, I'm Nabil</p>
-            <h1 className="max-w-4xl text-5xl font-semibold leading-[1.08] tracking-[-0.055em] sm:text-6xl lg:text-8xl">
-              I build digital products that <span className="font-serif font-normal italic text-[#d9a441]">solve real problems.</span>
-            </h1>
-            <p className="mt-8 max-w-2xl text-base leading-8 text-[#a7a8a7] sm:text-lg">
-              Software engineer focused on creating thoughtful web experiences, practical systems, and products that make work better.
-            </p>
-            <div className="mt-10 flex flex-wrap items-center gap-4">
-              <a href="#projects" className="inline-flex items-center gap-3 rounded-full bg-[#d9a441] px-6 py-3.5 text-sm font-bold text-[#17140e] transition hover:-translate-y-1 hover:bg-[#edbd61]">
-                Explore my work <ArrowUpRight size={17} />
-              </a>
-              <a href="#contact" className="inline-flex items-center gap-2 rounded-full border border-white/15 px-6 py-3.5 text-sm font-semibold text-[#e8e5dc] transition hover:border-[#d9a441]/70 hover:text-[#edbd61]">
-                Get in touch <ArrowDown size={16} />
-              </a>
-            </div>
-            <div className="mt-20 flex flex-wrap gap-x-10 gap-y-4 border-t border-white/10 pt-6 text-xs tracking-[0.16em] text-[#777b7e] uppercase">
-              <span>Frontend development</span>
-              <span>Full-stack exploration</span>
-              <span>Product-minded engineering</span>
-            </div>
-          </div>
-          <div className="hero-orbit pointer-events-none absolute -right-40 top-1/2 hidden h-[34rem] w-[34rem] -translate-y-1/2 rounded-full border border-[#d9a441]/10 lg:block" aria-hidden="true">
-            <div className="absolute inset-10 rounded-full border border-white/[0.06]" />
-            <div className="absolute inset-24 rounded-full border border-white/[0.06]" />
-            <div className="absolute right-24 top-20 rounded-2xl border border-[#d9a441]/20 bg-[#11151a] p-5 text-[#d9a441] shadow-2xl">
-              <Code2 size={34} />
-            </div>
-            <div className="absolute bottom-24 left-14 rounded-2xl border border-white/10 bg-[#11151a] p-5 text-[#a7a8a7] shadow-2xl">
-              <Terminal size={30} />
-            </div>
-            <div className="absolute bottom-16 right-24 rounded-2xl border border-white/10 bg-[#11151a] p-5 text-[#a7a8a7] shadow-2xl">
-              <Layers3 size={30} />
+
+            <div className="hero-visual relative mx-auto w-full max-w-[26rem] lg:ml-auto">
+              <div className="hero-visual-glow pointer-events-none absolute -inset-8 rounded-full" aria-hidden="true" />
+              <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-[#14191f] p-3 shadow-2xl shadow-black/40">
+                <div className="relative overflow-hidden rounded-[1.4rem] bg-[#20262d]">
+                  <img
+                    src="/image/about-me.png"
+                    alt="Nabil"
+                    className="hero-portrait aspect-[4/4.5] w-full object-cover object-center"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#090b0e]/80 via-transparent to-transparent" />
+                  <div className="absolute bottom-5 left-5 right-5">
+                    <p className="text-xs font-semibold tracking-[0.2em] text-[#edbd61] uppercase">Curiosity meets craft</p>
+                    <p className="mt-2 text-2xl font-semibold tracking-tight text-white">Build. Learn. Improve.</p>
+                  </div>
+                </div>
+                <div className="flex items-center justify-between gap-4 px-2 pb-1 pt-4">
+                  <div>
+                    <p className="text-sm font-semibold text-[#f1eee6]">Nabil</p>
+                    <p className="mt-1 text-xs text-[#929799]">Software engineer</p>
+                  </div>
+                  <div className="flex -space-x-2">
+                    <span className="rounded-full border border-[#14191f] bg-[#252d35] p-2.5 text-[#d9a441]"><Code2 size={17} /></span>
+                    <span className="rounded-full border border-[#14191f] bg-[#252d35] p-2.5 text-[#d9a441]"><Terminal size={17} /></span>
+                    <span className="rounded-full border border-[#14191f] bg-[#252d35] p-2.5 text-[#d9a441]"><Layers3 size={17} /></span>
+                  </div>
+                </div>
+              </div>
+              <div className="absolute -left-5 top-12 hidden items-center gap-2 rounded-full border border-white/10 bg-[#11161c] px-4 py-3 text-xs text-[#d9d8d1] shadow-xl sm:flex">
+                <Sparkles size={15} className="text-[#d9a441]" /> Always learning
+              </div>
             </div>
           </div>
         </section>
@@ -159,10 +187,10 @@ function App() {
                   <h2 className="max-w-3xl text-4xl font-semibold leading-tight tracking-[-0.04em] sm:text-6xl">Have a problem worth <span className="font-serif italic text-[#d9a441]">solving?</span></h2>
                   <p className="mt-6 max-w-xl leading-7 text-[#a0a3a3]">I’m open to connecting, sharing ideas, and exploring opportunities to build something useful.</p>
                 </div>
-                <a href="https://github.com/Muhammad-nabil99" target="_blank" rel="noreferrer" className="inline-flex w-fit items-center gap-3 rounded-full bg-[#d9a441] px-6 py-3.5 text-sm font-bold text-[#17140e] transition hover:-translate-y-1 hover:bg-[#edbd61]">
-                  Find me on GitHub <ArrowUpRight size={17} />
-                </a>
               </div>
+            </div>
+            <div className="mt-6">
+              <Contact />
             </div>
           </div>
         </section>
