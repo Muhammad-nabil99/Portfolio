@@ -1,78 +1,64 @@
+import { ArrowUpRight } from "lucide-react";
 import Skills from "./Skills";
+
+const projects = [
+  {
+    name: "Fluent",
+    category: "Language learning",
+    image: "./image/fluent.png",
+    alt: "Fluent language-learning application preview",
+    description: "An interactive language-learning platform designed to help students explore and practice languages including English, French, and Korean.",
+    stack: ["react", "tailwind", "supabase"],
+    number: "01",
+  },
+  {
+    name: "Trakel",
+    category: "Travel discovery",
+    image: "./image/trakel.png",
+    alt: "Trakel travel discovery application preview",
+    description: "A travel discovery application for exploring destinations, culinary experiences, and accommodation options around Pekalongan.",
+    stack: ["javascript", "bootstrap", "firebase"],
+    number: "02",
+  },
+  {
+    name: "World Wide Oasis",
+    category: "Hospitality",
+    image: "./image/the-wild-oasis.png",
+    alt: "World Wide Oasis booking platform preview",
+    description: "A hotel, cabin, and villa booking platform focused on making accommodation discovery and reservations straightforward.",
+    stack: ["react", "supabase", "reactQuery", "redux", "reactRouter"],
+    number: "03",
+  },
+];
 
 function Project() {
   return (
-    <div className=" flex flex-wrap justify-center h-fit gap-3 w-full ">
-      <div className="hover:border-2 hover:border-[#faad1b]  max-w-80 border-2 p-2 rounded-md">
-        <div className="relative -z-10  dark:z-20">
-          <img
-            src="./image/fluent.png"
-            className="h-40 w-full object-cover rounded-md"
-            alt="fluent"
-          />
-          <div className="place-self-start absolute bottom-0   w-full h-10 flex items-center p-2  ">
-            <Skills type="sm" teckStacks={["react", "tailwind", "supabase"]} />
+    <div className="grid gap-6 lg:grid-cols-3">
+      {projects.map((project) => (
+        <article key={project.name} className="project-card group">
+          <div className="relative overflow-hidden rounded-xl bg-[#171c22]">
+            <img src={project.image} alt={project.alt} loading="lazy" className="h-56 w-full object-cover transition duration-700 group-hover:scale-[1.04]" />
+            <span className="absolute left-4 top-4 rounded-full border border-white/15 bg-[#090b0e]/80 px-3 py-1.5 text-[10px] font-semibold tracking-[0.16em] text-[#e7e2d7] uppercase backdrop-blur">
+              {project.category}
+            </span>
           </div>
-        </div>
-        <h2 className="font-bold my-2 text-center capitalize ">Fluent</h2>
-        <span className="text-sm ">
-          Helps students to master multiple languages, by providing
-          comprehensive and interactive learning. Students can choose languages
-          such as English, French, Korean and others.
-        </span>
-      </div>
-
-      <div className=" hover:border-2 hover:border-[#faad1b]  max-w-80 border-2 p-2 rounded-md">
-        <div className="relative -z-10 dark:z-0 ">
-          <img
-            src="./image/trakel.png"
-            className="h-40 w-full object-cover rounded-md"
-            alt="trakel"
-          />
-          <div className="place-self-start absolute bottom-0   w-full h-10 flex items-center p-2">
-            <Skills
-              type="sm"
-              teckStacks={["javascript", "bootstrap", "firebase"]}
-            />
+          <div className="flex items-center justify-between gap-4 pt-6">
+            <div>
+              <p className="text-xs tracking-[0.18em] text-[#d9a441]">{project.number} / Selected project</p>
+              <h3 className="mt-2 text-2xl font-semibold tracking-[-0.03em] text-[#f1eee6]">{project.name}</h3>
+            </div>
+            <span className="rounded-full border border-white/10 p-3 text-[#d9a441] transition group-hover:border-[#d9a441]/50 group-hover:bg-[#d9a441]/10">
+              <ArrowUpRight size={19} />
+            </span>
           </div>
-        </div>
-        <h2 className="font-bold my-2 text-center capitalize">Trakel</h2>
-        <span className="text-sm ">
-          An application that helps travelers in Pekalongan to find the right
-          tourist destination, in this application we provide several choices
-          such as places, culinary, and hotel lodging
-        </span>
-      </div>
-      <div className=" hover:border-2 hover:border-[#faad1b]  max-w-80 border-2 p-2 rounded-md">
-        <div className="relative -z-10 dark:z-0 ">
-          <img
-            src="./image/the-wild-oasis.png"
-            className="h-40 w-full object-cover rounded-md"
-            alt="the_wild_oasis"
-          />
-          <div className="place-self-start absolute bottom-0   w-full h-10 flex items-center p-2">
-            <Skills
-              type="sm"
-              teckStacks={[
-                "react",
-                "supabase",
-                "reactQuery",
-                "redux",
-                "reactRouter",
-              ]}
-            />
+          <p className="mt-4 min-h-[6rem] text-sm leading-7 text-[#969b9d]">{project.description}</p>
+          <div className="mt-5 border-t border-white/10 pt-3">
+            <Skills type="sm" teckStacks={project.stack} />
           </div>
-        </div>
-        <h2 className="font-bold my-2 text-center capitalize ">
-          World wide oasis
-        </h2>
-        <span className="text-sm ">
-          Hotel, cabin and villa booking platform with fast and easy online
-          reservation features. Enjoy a practical, secure, and flexible booking
-          experience according to customer needs.
-        </span>
-      </div>
+        </article>
+      ))}
     </div>
   );
 }
+
 export default Project;
