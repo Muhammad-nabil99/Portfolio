@@ -1,21 +1,44 @@
+import { ArrowUpRight } from "lucide-react";
+import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
+
+const profiles = [
+  {
+    label: "GitHub",
+    detail: "Code and selected repositories",
+    href: "https://github.com/Muhammad-nabil99",
+    icon: FaGithub,
+  },
+  {
+    label: "LinkedIn",
+    detail: "Professional background",
+    href: "https://www.linkedin.com/in/muhammad-nabil-3960382b2/",
+    icon: FaLinkedin,
+  },
+  {
+    label: "Instagram",
+    detail: "A little more beyond the code",
+    href: "https://www.instagram.com/muhammadnabil991025/",
+    icon: FaInstagram,
+  },
+];
+
 function Contact() {
   return (
-    <form action="" className="flex flex-col gap-3 my-10 max-w-[34rem] m-auto">
-      <div className="flex flex-col gap-2">
-        <label htmlFor="name" className="font-normal">Name :</label>
-        <input required  name="name" id="name" className="ring-1 ring-[#faad1b] rounded-sm p-1 dark:bg-slate-800"  type="text" placeholder="Name" />
-      </div>
-      <div className="flex flex-col gap-2">
-        <label htmlFor="Email" className="font-normal">Email :</label>
-        <input required  name="Email" id="Email" className="ring-1 ring-[#faad1b] rounded-sm p-1 dark:bg-slate-800"  type="text" placeholder="Email" />
-      </div>
-      <div className="flex flex-col gap-2">
-        <label htmlFor="Description" className="font-normal">Description :</label>
-        <textarea required  name="Description" id="Description" className="ring-1 ring-[#faad1b] rounded-sm p-1 h-40 dark:bg-slate-800"  type="text" placeholder="Description" />
-      
-      </div>
-      <button className="border-2 w-fit py-1 px-4 m-auto bg-[#faad1b] text-white font-bold rounded-md ">Submit</button>
-    </form>
+    <div className="grid gap-3 md:grid-cols-3">
+      {profiles.map(({ label, detail, href, icon: Icon }) => (
+        <a key={label} href={href} target="_blank" rel="noreferrer" className="group flex items-center justify-between gap-4 rounded-xl border border-white/10 bg-white/[0.025] p-5 transition hover:-translate-y-1 hover:border-[#d9a441]/50 hover:bg-white/[0.045]">
+          <span className="flex items-center gap-4">
+            <span className="rounded-lg bg-white/[0.06] p-3 text-[#d9a441]"><Icon size={21} /></span>
+            <span>
+              <span className="block font-semibold text-[#f1eee6]">{label}</span>
+              <span className="mt-1 block text-xs text-[#8f9597]">{detail}</span>
+            </span>
+          </span>
+          <ArrowUpRight size={17} className="text-[#777e80] transition group-hover:text-[#d9a441]" />
+        </a>
+      ))}
+    </div>
   );
 }
+
 export default Contact;
