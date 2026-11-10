@@ -1,134 +1,53 @@
-import Hamburger from "hamburger-react";
-import { useState, useEffect } from "react"; // Import useEffect
-import { MdDarkMode } from "react-icons/md";
-import { TfiShine } from "react-icons/tfi";
-import { Link } from "react-scroll";
-import { useDarkMode } from "../context/DarkModeContext";
+import { useState } from "react";
+import { Menu, X, ArrowUpRight } from "lucide-react";
+
+const links = [
+  ["About", "#about"],
+  ["Skills", "#skills"],
+  ["Experience", "#experience"],
+  ["Projects", "#projects"],
+  ["Contact", "#contact"],
+];
 
 function Navbar() {
-  const [isOpen, setOpen] = useState(false);
-  const { isDarkMode, toggleDarkMode } = useDarkMode();
-
-  function toggleCloseDrawer() {
-    setOpen(!isOpen);
-  }
-
-  useEffect(() => {
-    if (window.innerWidth < 767) {
-      if (isOpen) {
-        document.body.classList.add("overflow-hidden");
-      } else {
-        document.body.classList.remove("overflow-hidden");
-      }
-    }
-  }, [isOpen]);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="fixed mb-20 w-full z-50">
-      {" "}
-      {/* Increased z-index here */}
-      <div
-        className={` flex justify-between items-center w-full ${isOpen ? "backdrop-blur-sm " : "bg-white"} ${isDarkMode ? "bg-transparent" : "bg-white"} dark:bg-slate-800 py-2`}
-      >
-        <div className="md:hidden p-2 px-4">
-          <Hamburger
-            className="relative z-30"
-            toggled={isOpen}
-            toggle={setOpen}
-          />
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/[0.07] bg-[#090b0e]/85 backdrop-blur-xl">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 sm:px-10 lg:px-16" aria-label="Main navigation">
+        <a href="#home" className="text-lg font-bold tracking-[-0.04em] text-white" onClick={() => setIsOpen(false)}>
+          nabil<span className="text-[#d9a441]">.</span>
+        </a>
+
+        <div className="hidden items-center gap-8 md:flex">
+          {links.map(([label, href]) => (
+            <a key={href} href={href} className="text-xs font-medium tracking-[0.12em] text-[#a5a8a8] transition hover:text-[#edbd61]">
+              {label}
+            </a>
+          ))}
         </div>
 
-        <button
-          className="mx-5 sm:absolute md:top-9   sm:p-2 lg:mr-20 sm:z-40 sm:right-0 w-fit sm:dark:bg-white sm:bg-slate-800  sm:rounded-full"
-          onClick={toggleDarkMode}
-        >
-          {isDarkMode ? (
-            <MdDarkMode className="text-3xl md:text-2xl sm:dark:text-black sm:text-white" />
-          ) : (
-            <TfiShine className="text-3xl md:text-2xl sm:dark:text-black sm:text-white" />
-          )}
+        <a href="#contact" className="hidden items-center gap-2 rounded-full border border-[#d9a441]/40 px-4 py-2 text-xs font-semibold text-[#edbd61] transition hover:bg-[#d9a441] hover:text-[#17140e] md:inline-flex">
+          Let's talk <ArrowUpRight size={14} />
+        </a>
+
+        <button type="button" aria-label={isOpen ? "Close menu" : "Open menu"} aria-expanded={isOpen} onClick={() => setIsOpen((open) => !open)} className="rounded-lg border border-white/10 p-2 text-white md:hidden">
+          {isOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
-      </div>
-      <nav
-        className={`flex ${isOpen ? "relative top-0 left-0 w-full -z-10" : "relative z-10"}`}
-      >
-        <ul
-          className={`backdrop-blur-sm h-screen md:h-fit md:justify-center bg-white/30 items-center text-black w-full md:w-fit md:rounded-full ${
-            isOpen ? "flex" : "hidden"
-          } absolute md:static flex-col justify-start   md:flex-row md:flex gap-16 md:gap-16 font-bold px-6 py-16 dark:text-white text-black text-xl sm:text-lg md:py-4  md:mx-auto md:my-4`}
-        >
-          <li className="w-full text-center">
-            <Link
-              to="about"
-              spy={true}
-              hashSpy={true}
-              smooth={true}
-              offset={-80}
-              duration={500}
-              activeClass="text-[#faad1b]"
-              onClick={toggleCloseDrawer}
-            >
-              About
-            </Link>
-          </li>
-          <li className="w-full text-center">
-            <Link
-              to="skills"
-              spy={true}
-              hashSpy={true}
-              smooth={true}
-              offset={-80}
-              duration={500}
-              activeClass="text-[#faad1b]"
-              onClick={toggleCloseDrawer}
-            >
-              Skills
-            </Link>
-          </li>
-          <li className="w-full text-center">
-            <Link
-              to="experiences"
-              spy={true}
-              hashSpy={true}
-              smooth={true}
-              offset={-80}
-              duration={500}
-              activeClass="text-[#faad1b]"
-              onClick={toggleCloseDrawer}
-            >
-              Experiences
-            </Link>
-          </li>
-          <li className="w-full text-center">
-            <Link
-              to="projects"
-              spy={true}
-              hashSpy={true}
-              smooth={true}
-              offset={-80}
-              duration={500}
-              activeClass="text-[#faad1b]"
-              onClick={toggleCloseDrawer}
-            >
-              Projects
-            </Link>
-          </li>
-          <li className="w-full text-center">
-            <Link
-              to="contact"
-              spy={true}
-              smooth={true}
-              offset={-80}
-              duration={500}
-              activeClass="text-[#faad1b]"
-              onClick={toggleCloseDrawer}
-            >
-              Contact
-            </Link>
-          </li>
-        </ul>
       </nav>
-    </div>
+
+      {isOpen && (
+        <div className="border-t border-white/10 bg-[#0d1014] px-6 py-5 md:hidden">
+          <div className="mx-auto flex max-w-7xl flex-col gap-1">
+            {links.map(([label, href]) => (
+              <a key={href} href={href} onClick={() => setIsOpen(false)} className="rounded-lg px-3 py-3 text-sm text-[#c5c6c2] transition hover:bg-white/5 hover:text-[#edbd61]">
+                {label}
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+    </header>
   );
 }
 
