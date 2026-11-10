@@ -27,21 +27,35 @@ a {
   text-decoration: none;
 }
 
+a:focus-visible, button:focus-visible {
+  outline: 2px solid #edbd61;
+  outline-offset: 4px;
+}
+
 ::selection {
   color: #090b0e;
   background: #d9a441;
 }
 
 .hero-grid {
-  opacity: 0.22;
+  opacity: 0.2;
   background-image: linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
   background-size: 72px 72px;
-  mask-image: linear-gradient(to right, black, transparent 78%);
+  mask-image: linear-gradient(to right, black, transparent 90%);
 }
 
-.hero-orbit {
-  background: radial-gradient(circle at center, rgba(217,164,65,.09), transparent 66%);
-  box-shadow: 0 0 120px rgba(217,164,65,.04);
+.hero-visual-glow {
+  background: radial-gradient(circle, rgba(217,164,65,.15), transparent 68%);
+  filter: blur(18px);
+}
+
+.hero-portrait {
+  display: block;
+  transition: transform .7s cubic-bezier(.2,.7,.2,1);
+}
+
+.hero-visual:hover .hero-portrait {
+  transform: scale(1.025);
 }
 
 .section-wrap {
@@ -117,6 +131,10 @@ a {
   background: rgba(255,255,255,.04);
 }
 
+.project-image-wrap img {
+  display: block;
+}
+
 .project-card .flex.flex-wrap {
   justify-content: flex-start;
   gap: .65rem;
@@ -129,6 +147,12 @@ a {
   border-radius: 1.5rem;
   background: radial-gradient(circle at 90% 0%, rgba(217,164,65,.12), transparent 36%), #101419;
   padding: clamp(1.5rem, 5vw, 4rem);
+}
+
+@media (min-width: 1024px) {
+  .hero-layout {
+    min-height: 39rem;
+  }
 }
 
 @media (min-width: 768px) {
@@ -153,6 +177,10 @@ a {
 
   .hero-grid {
     background-size: 44px 44px;
+  }
+
+  .hero-visual {
+    max-width: 21rem;
   }
 }
 
